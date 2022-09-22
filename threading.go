@@ -23,12 +23,11 @@ type num2 struct {
 }
 
 func (x num1) numStream() {
-
+	mem1.Lock()
 	for i := range x.a {
 		x.a[i] = i
 	}
 
-	mem1.Lock()
 	for i := range x.a {
 		time.Sleep(time.Millisecond)
 		fmt.Printf("%d", x.a[i])
@@ -38,12 +37,11 @@ func (x num1) numStream() {
 }
 
 func (y num2) numStream() {
-
+	mem2.Lock()
 	for j := range y.b {
 		y.b[j] = j
 	}
 
-	mem2.Lock()
 	for j := range y.b {
 		time.Sleep(time.Millisecond)
 		fmt.Printf("%d", y.b[j])
